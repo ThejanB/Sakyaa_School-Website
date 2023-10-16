@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+
+  <link rel="stylesheet" type="text/css" href="stylesheet1.css">
+
+	<style>
+    form {
+      width: 80%;
+      margin: auto;
+      padding: 50px;
+      border: 2px solid #adadad;
+      border-radius: 10px;
+      background-color: rgba(
+        233,
+        254,
+        235,
+        0.8
+        ); 
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+
+      label {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      textarea,
+      select {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .validation {
+        color: red;
+      }
+
+
+  
+        
+	</style>
+    
+    <script>
+      function validateEmail(email) {
+        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
+      }
+
+      function validateName(name) {
+        var pattern = /^[a-zA-Z .]+$/;
+        return pattern.test(name);
+      }
+
+      // Function to validate the form fields
+      function validateForm() {
+        var error = true;
+
+        // Validate the user ID field
+        var userID = document.getElementById("userID").value;
+        if (userID == "") {
+          document.getElementById("userIDValidation").innerHTML =
+            "Please enter your User ID.";
+          error = false;
+        } else if (userID.length < 5) {
+          document.getElementById("userIDValidation").innerHTML =
+            "User ID must be at least 5 characters long.";
+          error = false;
+        } else {
+          document.getElementById("userIDValidation").innerHTML = "";
+        }
+
+        // Validate the password field
+        var password = document.getElementById("password").value;
+        if (password == "") {
+          document.getElementById("passwordValidation").innerHTML =
+            "Please enter Password.";
+          error = false;
+        } else if (password.length < 8) {
+          document.getElementById("passwordValidation").innerHTML =
+            "Password must be at least 8 characters long.";
+          error = false;
+        } else {
+          document.getElementById("passwordValidation").innerHTML = "";
+        }
+
+        // Validate the name using the validateName function
+        var name = document.getElementById("name").value.trim();;
+        if (name == "") {
+          document.getElementById("nameValidation").innerHTML =
+            "Please enter your name.";
+          error = false;
+        } else if (!validateName(name)) {
+          document.getElementById("nameValidation").innerHTML =
+            "Please enter a valid name with letters only.";
+          error = false;
+        } else {
+          document.getElementById("nameValidation").innerHTML = "";
+        }
+
+        // Validate the email using the validateEmail function
+        var email = document.getElementById("email").value;
+        if (!validateEmail(email)) {
+          document.getElementById("emailValidation").innerHTML =
+            "Please enter a valid email address.";
+          error = false;
+        } else {
+          document.getElementById("emailValidation").innerHTML = "";
+        }
+
+        // Check if a sex is selected
+        var maleRadioButton = document.getElementById("male");
+        var femaleRadioButton = document.getElementById("female");
+        if (!maleRadioButton.checked && !femaleRadioButton.checked) {
+          document.getElementById("sexValidation").innerHTML =
+            "Please select your sex.";
+          error = false;
+        } else {
+          document.getElementById("sexValidation").innerHTML = "";
+        }
+
+        // Check if a language is selected
+        var englishCheckboxButton = document.getElementById("english");
+        var nonenglishCheckboxButton = document.getElementById("non-english");
+        if (
+          !englishCheckboxButton.checked &&
+          !nonenglishCheckboxButton.checked
+        ) {
+          document.getElementById("languageValidation").innerHTML =
+            "Please select your language.";
+          error = false;
+        } else {
+          document.getElementById("languageValidation").innerHTML = "";
+        }
+
+        // Check if a country is selected
+        var country = document.getElementById("country").value;
+        if (country == "") {
+          document.getElementById("countryValidation").innerHTML =
+            "Please select your country.";
+          error = false;
+        } else {
+          document.getElementById("countryValidation").innerHTML = "";
+        }
+
+        return error;
+      }
+    </script>
+
+</head>
+<body>
+  <div class="left-container">
+    <nav class="nav">
+      <ul>
+        <li><a href="loginForm.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="registrationForm.html">Register</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+	<div class="right-container">
+		
+        <h1>Registration Form</h1>
+
+        <form id="registrationForm" onsubmit="return validateForm()">
+
+          <label for="userID">User ID:<span style="color: red">*</span></label>
+          <span id="userIDValidation" class="validation"></span>
+          <input type="text" id="userID" name="userID" /><br />
+
+          <label for="password">Password:<span style="color: red">*</span></label>
+          <span id="passwordValidation" class="validation"></span>
+          <input type="password" id="password" name="password" /><br />
+
+          <label for="name">Name:<span style="color: red">*</span></label>
+          <span id="nameValidation" class="validation"></span><br />
+          <input type="text" id="name" name="name" /><br />
+
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" /><br />
+
+          <label for="country">Country:<span style="color: red">*</span></label>
+          <span id="countryValidation" class="validation"></span>
+          <select id="country" name="country">
+            <option value="">------ Select Your Country------</option>
+            <option value="Canada">Canada</option>
+            <option value="China">China</option>
+            <option value="India">India</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="USA">USA</option>
+            <option value="Other">Other</option></select
+          ><br />
+
+          <label for="zipCode">Zip Code:</label>
+          <input type="text" id="zipCode" name="zipCode" /><br />
+
+          <label for="email">Email:<span style="color: red">*</span></label>
+          <span id="emailValidation" class="validation"></span>
+          <input type="email" id="email" name="email" /><br />
+
+          <label>Sex :<span style="color: red">*</span></label>
+          <input type="radio" id="male" name="sex" value="male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="sex" value="female" />
+          <label for="female">Female</label>
+          <span id="sexValidation" class="validation"></span><br /><br />
+
+          <label for="language">Language :<span style="color: red">*</span></label>
+          <input type="checkbox" id="english" name="language" value="english" />
+          <label for="english">English</label>
+          <input
+            type="checkbox"
+            id="non-english"
+            name="language"
+            value="non-english" />
+          <label for="non-english">Non-English</label>
+          <span id="languageValidation" class="validation"></span><br /><br />
+
+          <label for="about">About:</label>
+          <textarea id="about" name="about"></textarea><br />
+
+          <input type="submit" value="Submit" />
+        </form>
+
+    		<footer>
+          <p>&copy; Sakya International School</p>
+        </footer>
+    </div>
+    
+</body>
+</html>

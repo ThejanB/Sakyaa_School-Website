@@ -1,0 +1,70 @@
+.left-container {
+    position: fixed;
+        display: flex;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    background-color: rgba(189, 248, 212, 0.659);
+    float: left; 
+    padding-top: 30px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    float: right; 
+}
+
+body {
+    background-image: url("assest/image1.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh; 
+}
+          
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+  
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.nav li {
+    margin-bottom: 20px; 
+}
+  
+.nav a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+  
+.nav a:hover {
+    background-color: #f2f2f2;
+    color: #555; 
+}
+
+footer {
+    background-color: #ebebeb;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 10px;
+}
